@@ -1,0 +1,17 @@
+<html lang ="en">
+
+<head>
+  <h3>ODYSSEY</h3>
+</head>
+<body>
+  <header>
+  </header>
+  <% if (user) { %>
+      <h3>Logged in as: <%= user.email %></h3>
+      <form action="/logout" method="POST"> <button>Logout</button></form>
+      <% } else { %>
+      <form action="/login" method="GET"> <button>Login</button></form>
+      <form action=/register><button>Register</button></form>
+    <% } %>
+</body>
+</html>
