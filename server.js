@@ -8,6 +8,8 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
+//to use put/patch/delete
+// const methodOverride = require('method-override')
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -34,6 +36,8 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+//to use put/patch/delete
+// app.use(methodOverride('X-HTTP-Method-Override'))
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
