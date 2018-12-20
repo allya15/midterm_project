@@ -43,6 +43,31 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+//Profile page
+//update route to get :userid instead of profile
+app.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
+//Register page
+//need to add post route to actually register
+//fill out form for email, password, etc
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+//Individual resource page
+//update route to get :resourceid instead of individual
+app.get("/individual", (req, res) => {
+  res.render("show");
+});
+
+//Add a new resource
+//need to add route to POST to the home page with new url, as well as to your own profile page
+app.get("/new", (req, res) => {
+  res.render("new");
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
