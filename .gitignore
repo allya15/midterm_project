@@ -5,4 +5,4 @@ public/styles
 *.sqlite3
 .DS_Store
 
-db/seeds/w4d5reqAsst/
+db/seeds/w4d5reqAsst
