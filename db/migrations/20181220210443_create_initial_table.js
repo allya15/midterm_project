@@ -7,7 +7,6 @@ exports.up = function(knex, Promise) {
         table.string('url');
         table.integer('user_id');
         table.foreign('user_id').references('users.id');
-        // table.primary(['user_id', 'url_id']);
         table.string('description');
         table.string('dateAdded');
       }).return();
@@ -19,7 +18,6 @@ exports.up = function(knex, Promise) {
         table.string('topics');
         table.integer('url_id');
         table.foreign('url_id').references('urls.id');
-        // table.primary(['url_id']);
       })
     })
 
@@ -32,7 +30,6 @@ exports.up = function(knex, Promise) {
         table.foreign('user_id').references('users.id')
         table.integer('url_id');
         table.foreign('url_id').references('urls.id');
-        // table.primary(['user_id', 'url_id']);
       })
     });
 
@@ -45,7 +42,6 @@ exports.up = function(knex, Promise) {
         table.foreign('user_id').references('users.id')
         table.integer('url_id');
         table.foreign('url_id').references('urls.id')
-        // table.primary(['user_id', 'url_id'])
         table.string('date')
       })
     });
@@ -59,7 +55,6 @@ exports.up = function(knex, Promise) {
         table.foreign('user_id').references('users.id')
         table.integer('url_id');
         table.foreign('url_id').references('urls.id')
-        // table.primary(['user_id', 'url_id'])
       })
     });
 
