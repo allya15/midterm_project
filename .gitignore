@@ -4,3 +4,5 @@ public/styles
 *.log
 *.sqlite3
 .DS_Store
+
+db/seeds/w4d5reqAsst/
