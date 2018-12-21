@@ -2,12 +2,12 @@ exports.seed = function(knex, Promise) {
   return knex('ratings').del()
     .then(() => {
       return Promise.all([
-        knex('ratings').insert({id: 1, rated: 4, user_id: 1, url_id: 1}),
-        knex('ratings').insert({id: 2, rated: 2.5, user_id: 2, url_id: 2}),
-        knex('ratings').insert({id: 3, rated: 1, user_id: 3, url_id: 3}),
-        knex('ratings').insert({id: 4, rated: 4, user_id: 1, url_id: 4}),
-        knex('ratings').insert({id: 5, rated: 2.5, user_id: 2, url_id: 5}),
-        knex('ratings').insert({id: 6, rated: 5, user_id: 3, url_id: 6}),
+        knex('ratings').insert({id: 40000001, rated: 4, user_id: 10000001, url_id: 20000001}),
+        knex('ratings').insert({id: 40000002, rated: 2.5, user_id: 10000002, url_id: 20000002}),
+        knex('ratings').insert({id: 40000003, rated: 1, user_id: 10000003, url_id: 20000003}),
+        knex('ratings').insert({id: 40000004, rated: 4, user_id: 10000001, url_id: 20000004}),
+        knex('ratings').insert({id: 40000005, rated: 2.5, user_id: 10000002, url_id: 20000005}),
+        knex('ratings').insert({id: 40000006, rated: 5, user_id: 10000003, url_id: 20000006}),
       ])
     })
 }

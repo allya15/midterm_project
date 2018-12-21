@@ -25,7 +25,7 @@ exports.up = function(knex, Promise) {
     .then(() => {
       return knex.schema.createTable('ratings', function(table) {
         table.increments();
-        table.integer('rated');
+        table.float('rated');
         table.integer('user_id');
         table.foreign('user_id').references('users.id');
         table.integer('url_id');

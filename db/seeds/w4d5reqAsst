@@ -1,0 +1,10 @@
+
+
+1/ fixed the crappy "del cannot del because foreign key" 
+      (by doing them in reverse order, by adding a file)
+2/ partially fixed a topic/topics bug
+   2b/ and advocated for not adding arrays
+3/ still got at least one schema problem preventing seeds (float?)
+4/ we've got this bullshit seed sequence primary key problem
+    fix it by moving our hardcoded seed ids to very large numbers.  be consistent.
+
