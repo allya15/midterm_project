@@ -1,0 +1,9 @@
+{
+  "user": "labber",
+  "password": "labber",
+  "database": "midterm",
+  "client": "pg",
+  "hostname": "localhost",
+  "port": 5432,
+  "ssl": true
+}
