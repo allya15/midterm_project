@@ -9,7 +9,7 @@ module.exports = (knex) => {
   router.get("/", (req, res) => {
     knex
       .select("*")
-      .from("urls") //KENNY - im assuming you called the table resources, change if not
+      .from("resources") //KENNY - im assuming you called the table resources, change if not
       .then((results) => {
         res.json(results);
     });
