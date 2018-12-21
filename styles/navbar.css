@@ -1,15 +1,1 @@
 /* NAVBAR CSS FILE */
-
-navbar-light bg-light {
-  position: fixed;
-  height: 80px;
-  top: 0;
-  width: 100%;
-  padding-left: 2em;
-  padding-right: 2em;
-  z-index: 1;
-}
-
-.form-control mr-sm-2{
-  
-}
