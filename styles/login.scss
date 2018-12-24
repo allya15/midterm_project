@@ -1,18 +1,25 @@
-/* REGISTER CSS FILE */
+/* LOGIN CSS FILE */
 
 body {
   background-color: #EEE;
 
   .jumbotron {
     background-color: #1187db;
-    padding-top: 150px;
-    padding-bottom: 50px;
+    padding-top: 250px;
+    padding-bottom: 150px;
   }
 
-  .lead {
+  .login-form {
     color: #FFFFFF
   }
 
+  #inputEmail {
+    width: 500px;
+  }
+
+  #inputPassword {
+    width: 500px;
+  }
 
   h1 {
     color: #FFFFFF;

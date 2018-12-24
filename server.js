@@ -47,6 +47,16 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+//Login page
+//Does what it is says on the tin...
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.post("/login", (req, res) => {
+  res.render("login");
+});
+
 //Profile page
 //update route to get :userid instead of profile
 app.get("/profile", (req, res) => {
