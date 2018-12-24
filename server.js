@@ -63,6 +63,13 @@ app.get("/profile", (req, res) => {
   res.render("profile");
 });
 
+//Portal page
+//Redirects to Login or Register
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+
 //Register page
 //need to add post route to actually register
 //fill out form for email, password, etc
