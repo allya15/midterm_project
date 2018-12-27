@@ -35,19 +35,18 @@
 
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-4 pt-1">Welcome to Odyssey!</h1>
+        <h1 class="display-4 pt-1">Log-in to Odyssey!</h1>
           <p class="lead">
-            What is Odyssey?
-            You can think of Odyssey like a web-based pinboard for learning.
+            Your next adventure awaits...
           </p>
         <hr class="my-4">
           <p class="my-4">
-          Log-in to Odyssey and continue your adventure
+            Sign into your account using the form below.
           </p>
 
           <!-- Login Form -->
 
-        <form action="/login" method="POST" class="login-form">
+        <form action="/profile" method="get" class="login-form">
           <div class="form-group">
             <label for="inputEmail">Email address</label>
             <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
@@ -60,7 +59,8 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Remember me!</label>
           </div>
-          <button type="submit" class="btn btn-light">Log-in</button>
+            <button type="submit" class="btn btn-light">Log-in
+            </button>
         </form>
 
       </div>

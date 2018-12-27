@@ -54,19 +54,13 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  res.render("login");
+  res.render("/");
 });
 
 //Profile page
 //update route to get :userid instead of profile
 app.get("/profile", (req, res) => {
   res.render("profile");
-});
-
-//Portal page
-//Redirects to Login or Register
-app.get("/register", (req, res) => {
-  res.render("register");
 });
 
 

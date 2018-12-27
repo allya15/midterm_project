@@ -24,19 +24,48 @@
 
   <body>
 
+    <!-- Welcome Header -->
+
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-4 pt-1">Welcome to Odyssey!</h1>
+        <h1 class="display-4">Welcome to Odyssey!</h1>
           <p class="lead">
             What is Odyssey?
             You can think of Odyssey like a web-based pinboard for learning.
           </p>
         <hr class="my-4">
           <p class="my-4">
-          Register or Log-in to Odyssey and begin your adventure today!
+          Register for an account to begin your adventure today!
           </p>
-        <button class="btn btn-light btn-lg mr-2" role="button">Register</button>
-        <button class="btn btn-light btn-lg mr-2" role="button">Log-in</button>
+
+          <!-- Register Form -->
+
+        <form action="/" method="get" class="login-form">
+          <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me!</label>
+          </div>
+            <button type="submit" class="btn btn-light">Register!
+            </button>
+        </form>
+
+        <br >
+        <br >
+
+        <!-- Already Have Account Question? -->
+        <div class="login-redirect">
+          <p>Aleady have an account? <p>
+            <button type="submit" class="btn btn-light">Log-in!</button>
+        </div>
+
       </div>
     </div>
 
