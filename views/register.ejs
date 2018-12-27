@@ -20,7 +20,7 @@
 
   </head>
 
-  <header><% include ./partials/_header %></header>
+  <header><% include ./partials/_header-not-logged-in %></header>
 
   <body>
 
@@ -49,20 +49,19 @@
             <label for="inputPassword">Password</label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Password">
           </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember me!</label>
-          </div>
+          <div>
             <button type="submit" class="btn btn-light">Register!
             </button>
+          </div>
         </form>
 
         <br >
         <br >
 
-        <!-- Already Have Account Question? -->
+        <!-- Already Have Account? -->
         <div class="login-redirect">
           <p>Aleady have an account? <p>
+            <form action="/login" method="get">
             <button type="submit" class="btn btn-light">Log-in!</button>
         </div>
 
