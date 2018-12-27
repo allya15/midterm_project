@@ -71,6 +71,11 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+//Saved Resources Page
+app.get("/saved", (req, res) => {
+  res.render("saved");
+});
+
 //Individual resource page
 //update route to get :resourceid instead of individual
 app.get("/individual", (req, res) => {
