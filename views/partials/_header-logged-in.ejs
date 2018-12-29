@@ -1,0 +1,49 @@
+
+<nav class="navbar navbar-light bg-light d-flex fixed-top bb-3">
+
+<!-- Logo -->
+    <div class="nav nav-pills nav-justified">
+        <a class="navbar-brand d-flex align-items-left pl-3">
+        <a href="/"><img src="/images/odyssey-logo.png" width="80" height="80" class="d-inline-block align-top" alt="Odyssey Logo"></a>
+        </a>
+    </div>
+
+<!-- Search Bar -->
+    <div class="col-6">
+      <form class="form-inline flex-grow-1">
+        <input class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary ptrlb-5" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+
+<!-- Buttons -->
+    <div class="nav justify-content-end col3">
+      <ul class="nav nav-pills">
+
+        <li class="nav-item pr-4">
+          <form action="/" method="get">
+            <button class="btn nav-link active btn-lg" type="submit"><i class="fas fa-home"></i> | Home </button>
+          </form>
+        </li>
+
+        <li class="nav-item pr-4">
+          <form action="/saved" method="get">
+            <button class="btn nav-link active btn-lg" type="submit"><i class="fas fa-save"></i> | Saved</button>
+          </form>
+        </li>
+
+        <li class="nav-item pr-4">
+          <form action="/profile" method="get">
+            <button class="btn nav-link active btn-lg" type="submit"><i class="fas fa-user"></i> | Profile</button>
+          </form>
+        </li>
+
+        <li class="nav-item pr-4">
+          <form action="/login" method="get">
+            <button class="btn nav-link active btn-lg" type="submit"><i class="fas fa-sign-out-alt"></i> | Logout</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+
+</nav>

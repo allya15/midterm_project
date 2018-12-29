@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+<<<<<<< HEAD
     <title>Register Page</title>
+=======
+    <title>Welcome to Odyssey!</title>
+
+<!-- LINKS -->
+>>>>>>> da7fea038b621ac1bd43a52703e5daf55ecbfa04
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <!-- SCRIPTS -->
+    <link rel="stylesheet" href="/styles/register.css" type="text/css" />
+
+<!-- SCRIPTS -->
+
     <!-- bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
@@ -15,11 +24,14 @@
 
   </head>
 
-  <header><% include ./partials/_header %></header>
+  <header><% include ./partials/_header-not-logged-in %></header>
 
   <body>
 
+    <!-- Welcome Header -->
+
     <div class="jumbotron">
+<<<<<<< HEAD
 
       <h1 class="display-4 pt-3">Welcome to Odyssey!</h1>
         <p class="lead">What is Odyssey?
@@ -30,6 +42,47 @@
           Sign up for Odyssey and begin your adventure today!
         </p>
       <a class="btn btn-primary btn-lg" href="#" role="button">Register</a>
+=======
+      <div class="container">
+        <h1 class="display-4">Welcome to Odyssey!</h1>
+          <p class="lead">
+            What is Odyssey?
+            You can think of Odyssey like a web-based pinboard for learning.
+          </p>
+        <hr class="my-4">
+          <p class="my-4">
+          Register for an account to begin your adventure today!
+          </p>
+
+          <!-- Register Form -->
+
+        <form action="/" method="get" class="login-form">
+          <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+          <div>
+            <button type="submit" class="btn btn-light">Register!
+            </button>
+          </div>
+        </form>
+
+        <br >
+        <br >
+
+        <!-- Already Have Account? -->
+        <div class="login-redirect">
+          <p>Aleady have an account? <p>
+            <form action="/login" method="get">
+            <button type="submit" class="btn btn-light">Log-in!</button>
+        </div>
+
+      </div>
+>>>>>>> da7fea038b621ac1bd43a52703e5daf55ecbfa04
     </div>
 
   </body>

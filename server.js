@@ -55,11 +55,23 @@ app.get("/", (req, res) => {
 
 
 //These routes are not located in the routes folder, and required above. Only home page is actually rendered here
+
+//Login page
+//Does what it is says on the tin...
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.post("/login", (req, res) => {
+  res.render("/");
+});
+
 //Profile page
 //update route to get :userid instead of profile
 // app.get("/profile", (req, res) => {
 //   res.render("profile");
 // });
+
 
 //Register page
 //need to add post route to actually register
@@ -67,6 +79,11 @@ app.get("/", (req, res) => {
 // app.get("/register", (req, res) => {
 //   res.render("register");
 // });
+
+//Saved Resources Page
+app.get("/saved", (req, res) => {
+  res.render("saved");
+});
 
 //Individual resource page
 //update route to get :resourceid instead of individual
@@ -79,6 +96,60 @@ app.get("/", (req, res) => {
 // app.get("/new", (req, res) => {
 //   res.render("new");
 // });
+app.get("/:resource_id", (req, res) => {
+
+  let resource_id = req.params.resource_id;
+  let templateVars = {};
+
+  // Getting the resource detail from database
+  knex('resources')
+    .join('users', 'users.id', '=', 'resources.user_id')
+    .where('resources.id', resource_id)
+    .select('resources.id', 'resources.URL', 'resources.title', 'resources.description', 'users.user_name', 'users.id as user_id', 'users.avatar_URL')
+    .then((results) => {
+      templateVars.resource_details = results[0];
+      knex('categories')
+        .select()
+        .then((categories) => {
+          templateVars.categories = categories;
+          res.render("resource_detail.ejs", templateVars);
+        })
+    })
+    .catch(function(error) {
+      console.error(error);
+    });
+
+});
+
+//Catergory Pages
+//All Catergories
+app.get("/", (req, res) => {
+  res.render("index");
+});
+//Math Page
+app.get("/maths", (req, res) => {
+  res.render("maths");
+});
+//Science Page
+app.get("/science", (req, res) => {
+  res.render("science");
+});
+//Politics Page
+app.get("/politics", (req, res) => {
+  res.render("politics");
+});
+//History Page
+app.get("/history", (req, res) => {
+  res.render("history");
+});
+//Dog-Meme Page
+app.get("/dog-memes", (req, res) => {
+  res.render("dog-memes");
+});
+//Cat-Meme Page
+app.get("/cat-memes", (req, res) => {
+  res.render("cat-memes");
+});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
