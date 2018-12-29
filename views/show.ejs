@@ -33,7 +33,7 @@
   <div class="jumbotron jumbotron-fluid mb-0">
     <div class="container pb-4">
       <h1 class="display-4">Your Selected Odyssey</h1>
-      <p class="lead">Use the tools below to comment, like, or save this Odyssey.</p>
+      <p class="lead">Use the tools below to comment, like, or rate this Odyssey.</p>
     </div>
   </div>
 
@@ -41,6 +41,31 @@
       <form method="POST" action=URL>>
         <input type="text" id="newResource" name="newResource" placeholder= "www.website.com" value="" /><br />
       </form>
+
+      <form class="input-field pl-5 pr-3 w-50">
+
+        <div class="form-group">
+          <label for="title-area">Resource Title</label>
+          <textarea class="form-control" id="resouce-title-box" rows="1"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Resource URL</label>
+          <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="http://">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Resource Description</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-primary">Add Resource
+          </button>
+        </div>
+      </form>
+
+
 
   <footer><% include ./partials/_footer %></footer>
 </body>
