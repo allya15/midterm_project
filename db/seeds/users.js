@@ -5,6 +5,7 @@ exports.seed = function(knex, Promise) {
         knex('users').insert({id: 1, email: 'ckapernick@nike.com', pass: '12', firstName: 'Colin', lastName: 'Kapernick'}),
         knex('users').insert({id: 2, email: 'getRockz@titan.com', pass: '12', firstName: 'Thanos', lastName: ''}),
         knex('users').insert({id: 3, email: 'TRUMP@TRUMP.com', pass: '12', firstName: 'Donald', lastName: 'Trump'}),
+        knex('users').insert({id: 4, email: 'freddie@queen.com', pass: 'queen123', firstName: 'Freddie', lastName: 'Mercury'}),
       ]);
     });
 };
