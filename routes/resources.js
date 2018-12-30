@@ -9,7 +9,7 @@ module.exports = (knex) => {
     //route for adding a new resource
     const newResource = {
       //creates new resource object to be entered in database
-      user_id: req.session.user.id,
+      user_id: req.session.userid,
       'URL': req.body.URL,
       title: req.body.title,
       description: req.body.description

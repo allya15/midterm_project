@@ -7,6 +7,7 @@ $(() => {
     //CREATES THE RESOURCE DOM TREE
     function createResource (resource){
       var $allResources = $("<div>").addClass("all-resources");
+
         var $singleResource = $("<div>").addClass("resource").appendTo($allResources);
           var $img = $(`<img class="card-img-top" src="${resource.imageURL}"></img>`).appendTo($singleResource);
           var $title = $(`<h3> ${resource.title} - <a href="${resource.resourceURL}">Source</a>`).appendTo($singleResource);
