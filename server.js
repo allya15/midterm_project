@@ -8,8 +8,9 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
+const cookieSession = require('cookie-session');
 //to use put/patch/delete
-const methodOverride = require('method-override')
+// const methodOverride = require('method-override')
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -19,7 +20,7 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each Resource
 // const commentsRoutes = require("./routes/comments");
 const urlsRoutes = require("./routes/resources");
-const usersRoutes = require("./routes/users");
+// const usersRoutes = require("./routes/users");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -38,14 +39,18 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['userid'],
+}))
 //to use put/patch/delete
-app.use(methodOverride('_method'))
+// app.use(methodOverride('_method'))
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+// app.use("/api/users", usersRoutes(knex));
 // app.use("/comments", commentsRoutes(knex));
 app.use('/urls', urlsRoutes(knex));
-app.use('/users', usersRoutes(knex));
+// app.use('/users', usersRoutes(knex));
 
 
 // Home page
@@ -56,6 +61,17 @@ app.get("/", (req, res) => {
 
 //These routes are not located in the routes folder, and required above. Only home page is actually rendered here
 
+function getUserId(email) {
+  return knex.select("id").from("users").where('email', email)
+  .then((users) => {
+    if(users.length>0) {
+      return Promise.resolve(users[0].id);
+    } else {
+      return Promise.resolve(0);
+    }
+  });
+};
+
 //Login page
 //Does what it is says on the tin...
 app.get("/login", (req, res) => {
@@ -63,22 +79,58 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  res.render("/");
+  let result = getUserId(req.body.emailaddress);
+  result.then((value) => {
+    if (value > 0) {
+      req.session.userid = value;
+      res.redirect("/");
+    } else {
+      res.send("Invalid username");
+    }
+  })
 });
 
 //Profile page
 //update route to get :userid instead of profile
-// app.get("/profile", (req, res) => {
-//   res.render("profile");
-// });
+app.get("/profile", (req, res) => {
+  res.render("profile");
+});
 
 
-//Register page
-//need to add post route to actually register
-//fill out form for email, password, etc
-// app.get("/register", (req, res) => {
-//   res.render("register");
-// });
+// Register page
+// need to add post route to actually register
+// fill out form for email, password, etc
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+
+app.post("/register", (req, res) => {
+  knex("users")
+    .insert({
+      email: req.body.emailaddress,
+      password: req.body.password,
+      firstName: req.body.firstname,
+      lastName: req.body.lastname
+    })
+    .then(() => {
+      let result = getUserId(req.body.emailaddress);
+      result.then((userid) => {
+        console.log("We've got to here!");
+        if (userid > 0) {
+          req.session.userid = userid;
+          res.redirect("/");
+        } else {
+          res.send("Sorry there were problems")
+        }
+      })
+    })
+})
+
+app.post("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/login");
+})
 
 //Saved Resources Page
 app.get("/saved", (req, res) => {
@@ -87,15 +139,15 @@ app.get("/saved", (req, res) => {
 
 //Individual resource page
 //update route to get :resourceid instead of individual
-// app.get("/show", (req, res) => {
-//   res.render("show");
-// });
+app.get("/show", (req, res) => {
+  res.render("show");
+});
 
 //Add a new resource
 //need to add route to POST to the home page with new url, as well as to your own profile page
-// app.get("/new", (req, res) => {
-//   res.render("new");
-// });
+app.get("/new", (req, res) => {
+  res.render("new");
+});
 app.get("/:resource_id", (req, res) => {
 
   let resource_id = req.params.resource_id;

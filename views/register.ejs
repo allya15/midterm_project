@@ -31,18 +31,8 @@
     <!-- Welcome Header -->
 
     <div class="jumbotron">
-<<<<<<< HEAD
 
-      <h1 class="display-4 pt-3">Welcome to Odyssey!</h1>
-        <p class="lead">What is Odyssey?
-          You can think of Odyssey like a web-based pinboard for learning.
-        </p>
-      <hr class="my-4">
-        <p>
-          Sign up for Odyssey and begin your adventure today!
-        </p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Register</a>
-=======
+
       <div class="container">
         <h1 class="display-4">Welcome to Odyssey!</h1>
           <p class="lead">
@@ -56,15 +46,26 @@
 
           <!-- Register Form -->
 
-        <form action="/" method="get" class="login-form">
+        <form action="/register" method="post" class="login-form">
           <div class="form-group">
+
+            <label for="inputfirstname">First name</label>
+            <input type="firstname" class="form-control" name="firstname" id="inputfirstname" placeholder="First name">
+
+            <label for="inputlastname">Last name</label>
+            <input type="lastname" class="form-control" name="lastname" id="inputlastname" placeholder="First name">
+
             <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" class="form-control" name="emailaddress" id="inputEmail" aria-describedby="emailHelp" placeholder="Email address">
+
+            <label for="inputpassword">Password</label>
+            <input type="password" class="form-control" name="password" id="inputpassword" placeholder="Password">
+
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-          </div>
+            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div> -->
           <div>
             <button type="submit" class="btn btn-light">Register!
             </button>
@@ -82,7 +83,6 @@
         </div>
 
       </div>
->>>>>>> da7fea038b621ac1bd43a52703e5daf55ecbfa04
     </div>
 
   </body>
