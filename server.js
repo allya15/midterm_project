@@ -92,18 +92,62 @@ app.get("/login", (req, res) => {
     .then(function(result) {
       const templateVars = {
         users: result[0],
+        username: req.session.user_id
       }
     res.render("login", templateVars);
     })
-    
+
 });
 
 app.post("/login", (req, res) => {
+  
+  const users = Promise.all([getUsers])
+    .then(function(result) {
+      for (var i in result) {
+        console.log(result[i])
+      }
+    })
+
+
+```
+    if (result[i].email === req.body.email) {
+     if (result[i].password === req.body.password) {
+    ?@?@    req.session.user_id = result[i].id
+       res.redirect('/')
+    } else {
+       res.redirect('/')
+    }
+    }
+```
+
   res.render("/");
 });
 
 //Profile page
 //update route to get :userid instead of profile
+
+
+
+```
+@@@knex branch@@@
+
+app.get('/profile/:id', (req, res) => {
+
+  const everything = Promise.all([getUsers, getURLs, getTopics, getRatings, getComments])
+  .then(function(result) {
+    const templateVars = {
+      users: result[0],
+      urls: result[1],
+      topics: result[2],
+      ratings: result[3],
+      comments: result[4]
+    }
+  })
+  res.render('profile')
+})
+
+```
+
 app.get("/profile", (req, res) => {
   res.render("profile");
 });
@@ -134,6 +178,12 @@ app.get("/individual", (req, res) => {
 app.get("/new", (req, res) => {
   res.render("new");
 });
+
+
+
+
+
+
 
 //Catergory Pages
 //All Catergories
