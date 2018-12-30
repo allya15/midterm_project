@@ -160,26 +160,131 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+
+```
+app.post('/register', (req, res) => {
+
+  const users = Promise.all([getUsers])
+    .then(function(result) {
+      const templateVars = {
+        users: result[0]
+      }
+    })
+
+
+
+
+    for (var i in users) {
+      if (req.body.email !== users[i].email) {
+        //insert
+      } else {
+        res.send(
+                  <!DOCTYPE HTML>
+                  <HTML>
+                    <head></head>
+                    <body>
+                      Email already exists
+                      <a href='/register'>Back to registration</a>
+                    </body>
+                  </HTML>
+          )
+      }
+    }
+
+  res.render('register')
+})
+
+
+knex('users').insert({
+  id: ,
+  email: req.body.email, 
+  pass: req.body.password,
+  firstname: req.body.first, 
+  lastname: req.body.last
+})
+  .then(function(result) {
+    res.redirect('/')
+  })
+```
+
+
 //Saved Resources Page
 app.get("/saved", (req, res) => {
 
-  res.render("saved");
+  const everything = Promise.all([getUsers, getURLs])
+    .then(function(result) {
+      const templateVars = {
+        users: result[0],
+        urls: result[1]
+      }
+      res.render("saved", templateVars);
+    })
+
 });
 
 //Individual resource page
 //update route to get :resourceid instead of individual
 app.get("/individual", (req, res) => {
 
-  res.render("show");
+  const everything = Promise.all([getUsers, getURLs, getTopics, getRatings, getComments])
+    .then(function(result) {
+      const templateVars = {
+        users: result[0],
+        urls: result[1],
+        topics: result[2],
+        ratings: result[3],
+        comments = result[4]
+      }
+      res.render("show", templateVars);
+    })
 });
 
 //Add a new resource
 //need to add route to POST to the home page with new url, as well as to your own profile page
 app.get("/new", (req, res) => {
+
   res.render("new");
 });
 
+```
+app.post('/new', (req, res) => {
 
+  const urls = Promise.all([getURLs])
+    .then(function(result) => {
+      const templateVars = {
+        urls: result[0]
+      }
+
+      for (var i in urls) {
+        if (req.body.url !== urls[i].url) {
+          //insert
+        } else {
+          res.send(
+                    <!doctype html>
+                    <html>
+                      <head></head>
+                      <body>
+                        Page already exists
+                        <a href='/new'>Back to Add New Page</a>
+                      </body>
+                    </html>
+          )
+
+        }
+      }
+    })
+
+
+})
+
+
+
+
+knex('users')
+
+
+
+```
 
 
 
