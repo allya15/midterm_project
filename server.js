@@ -42,15 +42,60 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 
+
+const getUsers = knex('users').select('*')
+.then(function(result) {
+  return result
+})
+
+const getURLs = knex('urls').select('*')
+.then(function(result) {
+  return result
+})
+const getTopics = knex('topics').select('*')
+.then(function(result) {
+  return result
+})
+
+const getRatings = knex('ratings').select('*')
+.then(function(result) {
+  return result
+})
+
+const getComments = knex('comments').select('*')
+.then(function(result) {
+  return result
+})
+
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+
+  const everything = Promise.all([getUsers, getURLs, getTopics, getRatings, getComments])
+    .then(function(result) {
+      const templateVars = {
+        users: result[0],
+        urls: result[1],
+        topics: result[2],
+        ratings: result[3],
+        comments: result[4]
+      }
+    res.render("index", templateVars)
+    })
+
 });
 
 //Login page
 //Does what it is says on the tin...
 app.get("/login", (req, res) => {
-  res.render("login");
+  
+  const everything = Promise.all([getUsers])
+    .then(function(result) {
+      const templateVars = {
+        users: result[0],
+      }
+    res.render("login", templateVars);
+    })
+    
 });
 
 app.post("/login", (req, res) => {
@@ -73,12 +118,14 @@ app.get("/register", (req, res) => {
 
 //Saved Resources Page
 app.get("/saved", (req, res) => {
+
   res.render("saved");
 });
 
 //Individual resource page
 //update route to get :resourceid instead of individual
 app.get("/individual", (req, res) => {
+
   res.render("show");
 });
 
