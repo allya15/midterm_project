@@ -108,10 +108,10 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     //route to get data for all resources in database
-    knex('resources')
-      //query to return an array of all resources
-      .join('users', 'users.id', '=', 'resources.user_id')
-      .select('resources.id AS resource_id', 'resources.URL', 'resources.title', 'resources.description',
+    knex('urls')
+      //query to return an array of all resoures
+      .join('users', 'users.id', '=', 'urls.user_id')
+      .select('urls.id AS resource_id', 'urls.URL', 'urls.title', 'urls.description',
         'user_id', 'users.user_name', 'users.avatar_URL')
       .orderBy('resource_id')
       //loop through array of resources and add the ratings property to each, containing an array of all ratings
@@ -137,7 +137,7 @@ module.exports = (knex) => {
         for (let resource of results) {
           promises.push(knex('likes')
             .select()
-            .where('resource_id', resource.resource_id)
+            .where('resource_id', url.resource_id)
             .then((likes) => {
               //console.log(results);
               resource['likes'] = likes;
@@ -189,9 +189,9 @@ module.exports = (knex) => {
 
   });
 
-  router.get("/:resource_id", (req, res) => {
-    const resource_id = req.params.resource_id;
-    knex('resources')
+  router.get("/:urls_id", (req, res) => {
+    const url_id = req.params.urls_id;
+    knex('urls')
       //query to return one resource object for a given resource id
       .join('users', 'users.id', '=', 'resources.user_id')
       .select('resources.id AS resource_id', 'resources.URL', 'resources.title', 'resources.description',
