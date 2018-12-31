@@ -280,7 +280,17 @@ app.post('/new', (req, res) => {
 
 
 
-knex('users')
+return knex('urls')
+  .insert({
+    id: ,
+    url: req.body.url,
+    user_id: req.session.user_id,     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    description: req.body.description,
+    dateAdded: Date.now(), //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  })
+  .then(function(result) {
+    res.redirect('individual')
+  })
 
 
 
@@ -290,35 +300,152 @@ knex('users')
 
 
 
+
+
+
+
+
+```
+
+const topics = Promise.all([getTopics])
+  .then(function(result) {
+    const templateVars = {
+      topics: result[0]
+    }
+  })
+
+
+```
+
+
 //Catergory Pages
 //All Catergories
+
+```
 app.get("/", (req, res) => {
-  res.render("index");
+
+  const topics = Promise.all([getTopics])
+  .then(function(result) {
+    const templateVars = {
+      topics: result[0]
+    }
+    res.render("index", templateVars);
+  })
+
 });
+
+
+
 //Math Page
 app.get("/maths", (req, res) => {
-  res.render("maths");
+
+  const getTopicMath = knex('topics').select('*').where(topic: 'math')
+    .then(function(result) {
+      return result
+    })
+
+  const topics = Promise.all([getTopicMath])
+  .then(function(result) {
+    const templateVars = {
+      topics: result[0]
+    }
+    res.render("maths", templateVars);
+  })
+
 });
+
+
+
 //Science Page
 app.get("/science", (req, res) => {
-  res.render("science");
+
+  const getTopicSci = knex('topics').select('*').where(topic: 'science')
+    .then(function(result) {
+      return result
+    })
+
+  const topics = Promise.all([getTopicSci])
+  .then(function(result) {
+    const templateVars = {
+      topics: result[0]
+    }
+    res.render("science");
+  })
 });
+
+
+
 //Politics Page
 app.get("/politics", (req, res) => {
-  res.render("politics");
+
+
+
+  const topics = Promise.all([getTopicPol])
+  .then(function(result) {
+    const templateVars = {
+      topics: result[0]
+    }
+    res.render("politics");
+  })
 });
+
+
+
 //History Page
 app.get("/history", (req, res) => {
-  res.render("history");
+
+
+
+  const topics = Promise.all([getTopicHis])
+  .then(function(result) {
+    const templateVars = {
+      topics: result[0]
+    }
+    res.render("history");
+  })
 });
+
+
+
 //Dog-Meme Page
 app.get("/dog-memes", (req, res) => {
-  res.render("dog-memes");
+
+
+
+  const topics = Promise.all([getTopicDog])
+  .then(function(result) {
+    const templateVars = {
+      topics: result[0]
+    }
+    res.render("dog-memes");
+  })
 });
+
+
+
 //Cat-Meme Page
 app.get("/cat-memes", (req, res) => {
-  res.render("cat-memes");
+
+
+  
+  const topics = Promise.all([getTopicCat])
+  .then(function(result) {
+    const templateVars = {
+      topics: result[0]
+    }
+    res.render("cat-memes");
+  })
+
+
 });
+```
+
+
+
+
+
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
