@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 
 
-  const createCard = function(card) {
+  const createCard = function() {
     let $card = $("<div>").addClass('card');
     let $cardImg = $("<img>").addClass('card-img-top');
     let $cardBody = $("<div>").addClass('card-body');
