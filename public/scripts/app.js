@@ -12,11 +12,20 @@ $(() => {
 
 
 
+
+
+
+
+
+
+
+
+
 $(document).ready(function() {
 
 
 
-  const createCard = function() {
+  const createCard = function(data) {
     let $card = $("<div>").addClass('card');
     let $cardImg = $("<img>").addClass('card-img-top');
     let $cardBody = $("<div>").addClass('card-body');
@@ -29,13 +38,41 @@ $(document).ready(function() {
     $cardImg.attr();  //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     $cardBody.append($cardTitle, $cardP);
     $cardFoot.append($cardFootText);
+
+
+
+
+
+
+
+
   };
 
 
+  const loadCard = function(data) {
+    $deck.empty(); //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    for (var i in data) {
+      const $card = createCard(data[i])
+      $deck.prepend($card) //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    }
+  };
+
+
+  const placeCard = function() {
+    $.ajax({
+      url: '',  //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+      method: 'GET',
+      success: function(result) {
+        loadCard(result)
+      }
+    })
+  }
 
 
 
 
+
+placeCard();
 
 
 
