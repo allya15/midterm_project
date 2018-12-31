@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <header>
-    <title>Add a New Odyssey</title>
+    <title>Add New | Odyssey</title>
   </header>
 
   <head>
     <!-- LINKS -->
-
         <!-- bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
         <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+        <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+        <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
 
     <!-- SCRIPTS -->
 
         <!-- bootstrap -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
         <!--Font Awesome -->
         <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script> -->
-
   </head>
 
 
-
   <body>
+
+    <!--Nav-Bar-->
     <header><% include ./partials/_header-logged-in %></header>
 
-
+    <!--Jumbotron Message-->
     <div class="jumbotron jumbotron-fluid mb-0">
       <div class="container pb-4">
         <h1 class="display-4">Continue Your Odyssey</h1>
@@ -36,23 +35,27 @@
     </div>
 
     <br >
-    <br > 
+    <br >
 
+    <!--Add New Form-->
 
     <form class="input-field pl-5 pr-3 w-50">
 
+      <!--Title-->
       <div class="form-group">
-        <label for="title-area">Resource Title</label>
+        <label for="title-area">Odyssey Title: </label>
         <textarea class="form-control" id="resouce-title-box" rows="1"></textarea>
       </div>
 
+      <!--URL-->
       <div class="form-group">
-        <label for="exampleFormControlInput1">Resource URL</label>
+        <label for="exampleFormControlInput1">Odyssey URL: </label>
         <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="http://">
       </div>
 
+      <!--Catergory-->
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Select a Catergory</label>
+        <label for="exampleFormControlSelect1">Select a Category:</label>
         <select class="form-control" id="exampleFormControlSelect1">
           <option>None</option>
           <option>Maths</option>
@@ -64,21 +67,21 @@
         </select>
       </div>
 
+      <!--Description-->
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Resource Description</label>
+        <label for="exampleFormControlTextarea1">Description:</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
       </div>
 
+      <!--Button-->
       <div>
-        <button type="submit" class="btn btn-primary">Add Resource
+        <button type="submit" class="btn btn-primary">Add Odyssey
         </button>
       </div>
     </form>
 
     <br >
     <br >
-
-
 
   </body>
 </html>

@@ -20,6 +20,8 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each Resource
 // const commentsRoutes = require("./routes/comments");
 const urlsRoutes = require("./routes/resources");
+const profileRoutes = require("./routes/profile");
+const viewProfileRoutes = require("./routes/userviewprofile");
 // const usersRoutes = require("./routes/users");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -50,6 +52,8 @@ app.use(cookieSession({
 // app.use("/api/users", usersRoutes(knex));
 // app.use("/comments", commentsRoutes(knex));
 app.use('/urls', urlsRoutes(knex));
+app.use('/api/profile', profileRoutes(knex));
+app.use('/api/userviewprofile', viewProfileRoutes(knex));
 // app.use('/users', usersRoutes(knex));
 
 
@@ -119,7 +123,7 @@ app.post("/login", (req, res) => {
 
 //Profile page
 //update route to get :userid instead of profile
-app.get("/profile", (req, res) => {
+app.get("/:firstname-:lastname", (req, res) => {
   res.render("profile");
 });
 

@@ -4,32 +4,25 @@
     <title>Register Page</title>
 
 <!-- LINKS -->
-
-
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
     <link rel="stylesheet" href="/styles/register.css" type="text/css" />
 
 <!-- SCRIPTS -->
-
     <!-- bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
     <!--Font Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script> -->
-
+    <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
   </head>
 
-  <header><% include ./partials/_header-not-logged-in %></header>
-
   <body>
+    <!--Nav-Bar Not Logged In-->
+    <header><% include ./partials/_header-not-logged-in %></header>
 
     <!-- Welcome Header -->
-
     <div class="jumbotron">
-
-
       <div class="container">
         <h1 class="display-4">Welcome to Odyssey!</h1>
           <p class="lead">
@@ -41,35 +34,41 @@
           Register for an account to begin your adventure today!
           </p>
 
-          <!-- Register Form -->
-
+        <!-- Register Form -->
         <form action="/register" method="post" class="login-form">
+
+          <!--First Name-->
           <div class="form-group">
             <label for="inputFirstName">First name</label>
             <input type="firstname" class="form-control" name="firstname" id="inputfirstname" placeholder="First name">
           </div>
 
+          <!--Last Name-->
           <div class="form-group">
             <label for="inputLastName">Last name</label>
             <input type="lastname" class="form-control" name="lastname" id="inputlastname" placeholder="First name">
           </div>
 
+          <!--Email Address-->
           <div class="form-group">
             <label for="inputEmail">Email address</label>
             <input type="email" class="form-control" name="emailaddress" id="inputEmail" aria-describedby="emailHelp" placeholder="Email address">
           </div>
 
+          <!--Password-->
           <div class="form-group">
             <label for="inputPassword">Password</label>
             <input type="password" class="form-control" name="password" id="inputpassword" placeholder="Password">
           </div>
           <br >
+
+          <!--Button-->
           <div>
             <button type="submit" class="btn btn-light">Register!
             </button>
           </div>
-        </form>
 
+        </form>
 
         <br >
         <br >
