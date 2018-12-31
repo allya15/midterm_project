@@ -233,7 +233,7 @@ app.get("/individual", (req, res) => {
         urls: result[1],
         topics: result[2],
         ratings: result[3],
-        comments = result[4]
+        comments: result[4]
       }
       res.render("show", templateVars);
     })
