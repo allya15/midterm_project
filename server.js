@@ -70,53 +70,25 @@ app.get("/topic/:topic", (req, res) => {
   const topic = req.params.topic;
   topic.toLowerCase();
 
-  const getTopics = knex('topics').select('*').where('topic', topic)
-    .then(function(result) {
-      return result
-    })
 
-    console.log(getTopics)
+  const getTopicURLs = knex('topics')
+    .join('urls', 'topics.url_id', '=', 'urls.id')
+    .select('*').where('topic', topic)
+  
 
-    const topics = Promise.all([getTopics])
+    const everything = Promise.all([getTopicURLs])
       .then(function(result) {
-        console.log('result', result)
+        console.log('result', result) //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         const templateVars = {
-          topics: result[0]
+          topicurl: result[0], 
         }
-        console.log(templateVars)
+        console.log(templateVars) //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         res.render("topics", templateVars);
       })
 
 
 })
 
-
-
-//Catergory Pages
-//Math Page
-app.get("/maths", (req, res) => {
-  res.render("maths");
-});
-//Science Page
-app.get("/science", (req, res) => {
-  res.render("science");
-});
-//Politics Page
-app.get("/politics", (req, res) => {
-  res.render("politics");
-});
-//History Page
-app.get("/history", (req, res) => {
-  res.render("history");
-});
-//Dog-Meme Page
-app.get("/dog-memes", (req, res) => {
-  res.render("dog-memes");
-});
-//Cat-Meme Page
-app.get("/cat-memes", (req, res) => {
-  res.render("cat-memes");
-});
 
 
 //These routes are not located in the routes folder, and required above. Only home page is actually rendered here
