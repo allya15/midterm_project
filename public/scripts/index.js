@@ -11,7 +11,7 @@ $(() => {
           <p class="card-text">${resource.description}</p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Added 3 mins ago</small>
+          <small class="text-muted">${resource.dateAdded}</small>
 
           <!--Action Buttons -->
               <div class="btn-group btn-group-sm float-right" role="group" aria-label="Action Buttons">
