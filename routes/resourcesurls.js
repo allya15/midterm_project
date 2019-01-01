@@ -7,7 +7,7 @@ module.exports = (knex) => {
   router.get("/", (req,res) => {
     knex
     .select('*')
-    .from('users')
+    .from('urls')
     .then((results) =>{
       res.json(results);
     })
@@ -16,12 +16,11 @@ module.exports = (knex) => {
   return router;
 }
 
-
 /*
 Table columns:
 id
-email
-password
-firstName
-lastName
+url
+user_id
+description
+dateAdded
 */
