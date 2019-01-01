@@ -25,6 +25,7 @@
     "pg": "^6.0.2"
   },
   "devDependencies": {
+    "node-sass": "^4.11.0",
     "nodemon": "^1.9.2"
   }
 }

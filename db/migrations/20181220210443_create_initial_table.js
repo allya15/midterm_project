@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
     .then(() => {
       return knex.schema.createTable('topics', function(table) {
         table.increments();
-        table.string('topics');
+        table.string('topic');
         table.integer('url_id');
         table.foreign('url_id').references('urls.id');
       })
@@ -25,9 +25,9 @@ exports.up = function(knex, Promise) {
     .then(() => {
       return knex.schema.createTable('ratings', function(table) {
         table.increments();
-        table.integer('rated');
+        table.float('rated');
         table.integer('user_id');
-        table.foreign('user_id').references('users.id')
+        table.foreign('user_id').references('users.id');
         table.integer('url_id');
         table.foreign('url_id').references('urls.id');
       })
@@ -39,10 +39,10 @@ exports.up = function(knex, Promise) {
         table.increments();
         table.string('comment');
         table.integer('user_id');
-        table.foreign('user_id').references('users.id')
+        table.foreign('user_id').references('users.id');
         table.integer('url_id');
-        table.foreign('url_id').references('urls.id')
-        table.string('date')
+        table.foreign('url_id').references('urls.id');
+        table.string('date');
       })
     });
 
@@ -52,9 +52,9 @@ exports.up = function(knex, Promise) {
         table.increments();
         table.boolean('liked');
         table.integer('user_id');
-        table.foreign('user_id').references('users.id')
+        table.foreign('user_id').references('users.id');
         table.integer('url_id');
-        table.foreign('url_id').references('urls.id')
+        table.foreign('url_id').references('urls.id');
       })
     });
 
