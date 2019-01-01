@@ -22,6 +22,8 @@ const knexLogger  = require('knex-logger');
 const urlsRoutes = require("./routes/resources");
 const profileRoutes = require("./routes/profile");
 const viewProfileRoutes = require("./routes/userviewprofile");
+const indexCardsRoutes = require("./routes/resourcesurls");
+
 // const usersRoutes = require("./routes/users");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -54,6 +56,8 @@ app.use(cookieSession({
 app.use('/urls', urlsRoutes(knex));
 app.use('/api/profile', profileRoutes(knex));
 app.use('/api/userviewprofile', viewProfileRoutes(knex));
+app.use('/api/resourcesurls', indexCardsRoutes(knex));
+
 // app.use('/users', usersRoutes(knex));
 
 

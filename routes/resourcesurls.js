@@ -14,7 +14,7 @@ module.exports = (knex) => {
   });
 
   return router;
-}
+} 
 
 /*
 Table columns:
