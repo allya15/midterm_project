@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
 
   const createURLsTable = knex.schema.createTable('urls', function(table) {
         table.increments();
+        table.string('title');
         table.string('url');
         table.integer('user_id');
         table.foreign('user_id').references('users.id');
