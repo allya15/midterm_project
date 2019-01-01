@@ -51,7 +51,7 @@ exports.up = function(knex, Promise) {
     .then(() => {
       return knex.schema.createTable('likes', function(table) {
         table.increments();
-        table.boolean('liked');
+        table.integer('liked');
         table.integer('user_id');
         table.foreign('user_id').references('users.id');
         table.integer('url_id');
