@@ -63,46 +63,45 @@ app.get("/", (req, res) => {
 });
 
 
-
-
-app.get("/topic/:topic", (req, res) => {
-
-  const topic = req.params.topic;
-  topic.toLowerCase();
-
-
-  const getTopicURLs = knex('topics')
-    .join('urls', 'topics.url_id', '=', 'urls.id')
-    .select('*').where('topic', topic)
-  
-
-    const everything = Promise.all([getTopicURLs])
-      .then(function(result) {
-        console.log('result', result) //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        const templateVars = {
-          topicurl: result[0], 
-        }
-        console.log(templateVars) //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        res.render("topics", templateVars);
-      })
-
-
-})
-
+//Catergory Pages
+//Math Page
+app.get("/maths", (req, res) => {
+  res.render("maths");
+});
+//Science Page
+app.get("/science", (req, res) => {
+  res.render("science");
+});
+//Politics Page
+app.get("/politics", (req, res) => {
+  res.render("politics");
+});
+//History Page
+app.get("/history", (req, res) => {
+  res.render("history");
+});
+//Dog-Meme Page
+app.get("/dog-memes", (req, res) => {
+  res.render("dog-memes");
+});
+//Cat-Meme Page
+app.get("/cat-memes", (req, res) => {
+  res.render("cat-memes");
+});
 
 
 //These routes are not located in the routes folder, and required above. Only home page is actually rendered here
 
-// function getUserId(email) {
-//   return knex.select("id").from("users").where('email', email)
-//   .then((users) => {
-//     if(users.length>0) {
-//       return Promise.resolve(users[0].id);
-//     } else {
-//       return Promise.resolve(0);
-//     }
-//   });
-// };
+function getUserId(email) {
+  return knex.select("id").from("users").where('email', email)
+  .then((users) => {
+    if(users.length>0) {
+      return Promise.resolve(users[0].id);
+    } else {
+      return Promise.resolve(0);
+    }
+  });
+};
 
 //Login page
 //Does what it is says on the tin...
@@ -180,32 +179,32 @@ app.get("/new", (req, res) => {
   res.render("new");
 });
 
-// app.get("/:resource_id", (req, res) => {
+app.get("/:resource_id", (req, res) => {
 
-//   let resource_id = req.params.resource_id;
-//   let templateVars = {};
+  let resource_id = req.params.resource_id;
+  let templateVars = {};
 
-//   // Getting the resource detail from database
-//   knex('resources')
-//     .join('users', 'users.id', '=', 'resources.user_id')
-//     .where('resources.id', resource_id)
-//     .select('resources.id', 'resources.URL', 'resources.title', 'resources.description', 'users.user_name', 'users.id as user_id', 'users.avatar_URL')
-//     .then((results) => {
-//       templateVars.resource_details = results[0];
-//       knex('categories')
-//         .select()
-//         .then((categories) => {
-//           templateVars.categories = categories;
-//           res.render("resource_detail.ejs", templateVars);
-//         })
-//     })
-//     .catch(function(error) {
-//       console.error(error);
-//     });
+  // Getting the resource detail from database
+  knex('resources')
+    .join('users', 'users.id', '=', 'resources.user_id')
+    .where('resources.id', resource_id)
+    .select('resources.id', 'resources.URL', 'resources.title', 'resources.description', 'users.user_name', 'users.id as user_id', 'users.avatar_URL')
+    .then((results) => {
+      templateVars.resource_details = results[0];
+      knex('categories')
+        .select()
+        .then((categories) => {
+          templateVars.categories = categories;
+          res.render("resource_detail.ejs", templateVars);
+        })
+    })
+    .catch(function(error) {
+      console.error(error);
+    });
 
-//});
+});
 
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
-});
+})
