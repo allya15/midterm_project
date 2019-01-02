@@ -102,16 +102,11 @@ app.get("/", (req, res) => {
         comments: result[4],
         likes: result[5],
       }
+
+      console.log(templateVars)
       res.render("index", templateVars);
     })
 });
-
-
-
-app.get('/topics/:topic', (req, res) => {
-
-
-
 
 
 //Catergory Pages
