@@ -67,6 +67,27 @@ app.get("/", (req, res) => {
 });
 
 
+
+app.get('/topics/:topic', (req, res) => {
+
+  let topic = req.params.topic;
+  topic = topic.toLowerCase();
+
+
+  const getTopicURLs = knex('topics')
+    .join('urls', 'topics.url_id', '=', 'urls.id')
+    .select('*').where('topic', topic)
+
+  const everything = Promise.all([getTopicURLs])
+    .then(function(result) {
+      const templateVars = {
+        topicurl: result[0],
+      }
+      console.log(templateVars);
+      res.render('topics', templateVars);
+    })
+})
+
 //Catergory Pages
 //Math Page
 app.get("/maths", (req, res) => {

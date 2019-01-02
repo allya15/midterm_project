@@ -9,7 +9,6 @@
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/science.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
 
   <!-- SCRIPTS -->
     <script type="text/javascript" src="/scripts/profile.js"></script>
@@ -22,6 +21,9 @@
 
 
   <body>
+    
+    <!--Nav-Bar-->
+    <header><% include ./partials/_header-logged-in %></header>
 
 
     <% for (var i in topicurl) {%>
