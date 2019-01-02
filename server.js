@@ -63,30 +63,56 @@ app.use('/api/resourcesurls', indexCardsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+
+  const getUsers = knex('users').select('*')
+  .then(function(result) {
+    return result
+  })
+  const getURLs = knex('urls').select('*')
+  .then(function(result) {
+    return result
+  })
+  const getTopics = knex('topics').select('*')
+  .then(function(result) {
+    return result
+  })
+
+  const getRatings = knex('ratings').select('*')
+    .then(function(result) {
+      return result
+    })
+
+  const getComments = knex('comments').select('*')
+  .then(function(result) {
+    return result
+  })
+
+  const getLikes = knex('likes').select('*')
+  .then(function(result) {
+    return result
+  })
+
+  const everything = Promise.all([getUsers, getURLs, getTopics, getRatings, getComments, getLikes])
+    .then(function(result) {
+      const templateVars = {
+        users: result[0],
+        urls: result[1],
+        topics: result[2],
+        ratings: result[3],
+        comments: result[4],
+        likes: result[5],
+      }
+      res.render("index", templateVars);
+    })
 });
 
 
 
 app.get('/topics/:topic', (req, res) => {
 
-  let topic = req.params.topic;
-  topic = topic.toLowerCase();
 
 
-  const getTopicURLs = knex('topics')
-    .join('urls', 'topics.url_id', '=', 'urls.id')
-    .select('*').where('topic', topic)
 
-  const everything = Promise.all([getTopicURLs])
-    .then(function(result) {
-      const templateVars = {
-        topicurl: result[0],
-      }
-      console.log(templateVars);
-      res.render('topics', templateVars);
-    })
-})
 
 //Catergory Pages
 //Math Page
