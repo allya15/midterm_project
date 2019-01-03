@@ -23,6 +23,7 @@ const urlsRoutes = require("./routes/resources");
 const profileRoutes = require("./routes/profile");
 const viewProfileRoutes = require("./routes/userviewprofile");
 const indexCardsRoutes = require("./routes/resourcesurls");
+const showRoutes = require("./routes/show");
 
 // const usersRoutes = require("./routes/users");
 
@@ -57,6 +58,7 @@ app.use('/urls', urlsRoutes(knex));
 app.use('/api/profile', profileRoutes(knex));
 app.use('/api/userviewprofile', viewProfileRoutes(knex));
 app.use('/api/resourcesurls', indexCardsRoutes(knex));
+app.use('/api/show', showRoutes(knex));
 
 // app.use('/users', usersRoutes(knex));
 
@@ -127,8 +129,8 @@ app.get("/history", (req, res) => {
   res.render("history");
 });
 //Dog-Meme Page
-app.get("/dog-memes", (req, res) => {
-  res.render("dog-memes");
+app.get("/fake-news", (req, res) => {
+  res.render("fake-news");
 });
 //Cat-Meme Page
 app.get("/cat-memes", (req, res) => {
@@ -208,15 +210,26 @@ app.post("/logout", (req, res) => {
   res.redirect("/login");
 })
 
-//Saved Resources Page
-app.get("/saved", (req, res) => {
-  res.render("saved");
-});
-
 //Individual resource page
 //update route to get :resourceid instead of individual
-app.get("/show", (req, res) => {
-  res.render("show");
+app.get("/show/:id", (req, res) => {
+
+  const getURLs = knex('urls').select('*')
+    .then(function(result) {
+      return result
+    })
+
+  const everything = Promise.all([getURLs])
+    .then(function(result) {
+      const templateVars = {
+        urls: result[0]
+      }
+      console.log('CONSOLE', templateVars)
+      JSON.stringify(templateVars);
+      res.render("show", templateVars);
+    })
+
+
 });
 
 //Add a new resource

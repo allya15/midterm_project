@@ -1,12 +1,49 @@
 body {
+  background-color: #FFF;
+
 
   .img-circle {
    float: left;
-   height: 12em;
-   width: 12em;
+   height: 12.5em;
+   width: 12.5em;
    border-radius: 10em;
  }
 
+ /* Split the screen in half */
+ .split {
+   height: 100%;
+   width: 50%;
+   position: fixed;
+   top: 120;
+   overflow-x: hidden;
+   // padding-top: 20px;
+ }
 
+ /* Control the left side */
+ .left {
+   left: 0;
+ }
 
+ /* Control the right side */
+ .right {
+   right: 0;
+ }
+
+ .liked {
+   padding-top: 30px;
+   font-size: 40px;
+   color: #1187db;
+   text-align: center;
+ }
+
+ .uploads {
+   padding-top: 30px;
+   font-size: 40px;
+   color: #1187db;
+   text-align: center;
+ }
+
+ .icon {
+   font-size: 40px;
+ }
 }

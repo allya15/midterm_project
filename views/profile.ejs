@@ -27,18 +27,41 @@
     <!-- Profile Header -->
     <div class="jumbotron">
       <div class="container pb-5 profile-container">
-        <div class="profile-greeting"></div>
+        <div class="profile-greeting trump-greeting"></div>
         <p class="lead">Your uploaded Odysseys await...</p>
-        <img src="https://bit.ly/2R6ZVxh" class="img-circle" alt="Profile Photo">
+        <img src="https://bit.ly/2BVrrE5" class="img-circle trump-image" alt="Profile Photo">
       </div>
     </div>
 
     <br>
     <br>
     <br>
+    <br >
 
     <!-- Card Deck -->
-    <% include ./partials/_card-deck %>
+    <div class="split left">
+      <p class="lead pl-2 liked trump-liked">
+        <i class="fas fa-thumbs-up icon"></i>&nbsp;&nbsp;&nbsp;
+          <strong>Liked Odysseys</strong>
+      </p>
+      <hr class="my-4">
+        <!-- Card Deck -->
+        <% include ./partials/_card-deck-likes-trump %>
+    </div>
+
+
+    <div class="split right">
+      <p class="lead pl-2 uploads trump-upload">
+        <i class="fas fa-file-upload icon"></i>&nbsp;&nbsp;&nbsp;
+          <strong>Uploaded Odysseys</strong>
+      </p>
+      <hr class="my-4">
+        <!-- Card Deck -->
+        <% include ./partials/_card-deck-upload-trump %>
+    </div>
+
+
+
 
     <!--Add & Scroll button -->
     <footer><% include ./partials/_footer %></footer>
