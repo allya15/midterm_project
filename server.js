@@ -240,26 +240,28 @@ app.get("/new", (req, res) => {
 
 app.get("/:resource_id", (req, res) => {
 
-  let resource_id = req.params.resource_id;
-  let templateVars = {};
 
-  // Getting the resource detail from database
-  knex('resources')
-    .join('users', 'users.id', '=', 'resources.user_id')
-    .where('resources.id', resource_id)
-    .select('resources.id', 'resources.URL', 'resources.title', 'resources.description', 'users.user_name', 'users.id as user_id', 'users.avatar_URL')
-    .then((results) => {
-      templateVars.resource_details = results[0];
-      knex('categories')
-        .select()
-        .then((categories) => {
-          templateVars.categories = categories;
-          res.render("resource_detail.ejs", templateVars);
-        })
-    })
-    .catch(function(error) {
-      console.error(error);
-    });
+  res.render("show");
+  // let resource_id = req.params.resource_id;
+  // let templateVars = {};
+  //
+  // // Getting the resource detail from database
+  // knex('resources')
+  //   .join('users', 'users.id', '=', 'resources.user_id')
+  //   .where('resources.id', resource_id)
+  //   .select('resources.id', 'resources.URL', 'resources.title', 'resources.description', 'users.user_name', 'users.id as user_id', 'users.avatar_URL')
+  //   .then((results) => {
+  //     templateVars.resource_details = results[0];
+  //     knex('categories')
+  //       .select()
+  //       .then((categories) => {
+  //         templateVars.categories = categories;
+  //         res.render("resource_detail.ejs", templateVars);
+  //       })
+  //   })
+  //   .catch(function(error) {
+  //     console.error(error);
+  //   });
 
 });
 

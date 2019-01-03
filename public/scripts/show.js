@@ -2,13 +2,26 @@ $(() => {
   $.ajax({
     method:"GET",
     url:"/api/show"
-  }).done((users) => {
-    console.log('console', users)
+  }).done((resources) => {
+    for (const resource of resources) {
+      $(".resource-title").append(
+        `<div class="col-sm-3">
+        ${resource.title}
+        </div>`);
 
-    for (var i of users) {
-      console.log(i.id)
-      console.log(i.title)
-      console.log(i.url)
+    $(".resource-url").append(
+      `<div class="col-sm-3">
+        <a href="${resource.url}">
+        <button class="btn btn-primary ptrlb-5" type="submit">View Odyssey
+        </button>
+        </a>
+        </div>`);
+
+    $(".resource-description").append(
+      `<div>
+      ${resource.description}
+      </div>`
+    );
     }
 
   })

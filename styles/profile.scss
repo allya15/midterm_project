@@ -13,10 +13,10 @@ body {
  .split {
    height: 100%;
    width: 50%;
-   position: fixed;
+   position: absolute;
    top: 120;
    overflow-x: hidden;
-   // padding-top: 20px;
+   padding-top: 20px;
  }
 
  /* Control the left side */

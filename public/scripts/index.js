@@ -5,7 +5,9 @@ $(() => {
   }).done((resources) => {
     console.log("These are my resources: ", resources);
     for (resource of resources) {
-      $("#index-cards").append(`<div class="card">
+      $("#index-cards").append(`
+        <div class = "col-sm-4">
+        <div class="card my-3">
         <div class="card-body">
           <h5 class="card-title">${resource.title}</h5>
           <p class="card-text">${resource.description}</p>
@@ -15,19 +17,14 @@ $(() => {
 
           <!--Action Buttons -->
               <div class="btn-group btn-group-sm float-right" role="group" aria-label="Action Buttons">
-                <form action="/show" method="get">
-                  <button class="btn btn-primary btn-sm rounded-0" type="submit"><i class="fas fa-comments"></i></button>
-                </form>
-                <form action="/show" method="get">
-                  <button class="btn btn-primary btn-sm rounded-0" type="submit"><i class="fas fa-thumbs-up"></i></button>
-                </form>
-                <form action="/show" method="get">
-                  <button class="btn btn-primary btn-sm rounded-0" type="submit"><i class="fas fa-star-half-alt"></i></button>
+                <form action="/${resource.id}" method="get">
+                  <button class="resource-button btn btn-primary btn-sm rounded-0" type="submit"><i class="far fa-eye"></i> | View</button>
                 </form>
               </div>
 
         </div>
 
+      </div>
       </div>`)
     }
   })

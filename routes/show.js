@@ -7,17 +7,14 @@ module.exports = (knex) => {
   router.get("/", (req,res) => {
 
 
-    const myID = req.headers.referer.split('/');
-    const myID2 = myID[4]
-
-    console.log('id', myID)
-    console.log(myID2)
-
+    const referer = req.headers.referer.split('/');
+    const resourceId = referer[3].split('?');
+    const myId = resourceId[0];
 
     knex
     .select('*')
     .from('urls')
-    .where('id', myID2)
+    .where('id', myId)
     .then((results) =>{
       res.json(results);
     })
