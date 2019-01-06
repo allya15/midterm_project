@@ -5,8 +5,8 @@ $(() => {
   }).done((resources) => {
     console.log("These are my resources: ", resources);
     for (resource of resources) {
-      console.log('RESOURCE', resource)
-      $("#index-cards").append(`
+      if (resource.topic === 'biology'){
+        $("#index-cards").append(`
         <div class = "col-sm-4">
         <div class="card my-3">
         <div class="card-body">
@@ -27,6 +27,7 @@ $(() => {
 
       </div>
       </div>`)
+      }
     }
   })
 })

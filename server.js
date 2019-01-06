@@ -18,13 +18,14 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
-// const commentsRoutes = require("./routes/comments");
+const commentsRoutes = require("./routes/comments");
 // const urlsRoutes = require("./routes/resources");
 // const profileRoutes = require("./routes/profile");
 // const viewProfileRoutes = require("./routes/userviewprofile");
  const indexCardsRoutes = require("./routes/resourcesurls");
  const showRoutes = require("./routes/show");
  const bioCards = require("./routes/biourls")
+
 
 // const usersRoutes = require("./routes/users");
 
@@ -60,7 +61,7 @@ app.use(cookieSession({
 // app.use('/api/userviewprofile', viewProfileRoutes(knex));
  app.use('/api/resourcesurls', indexCardsRoutes(knex));
  app.use('/api/show', showRoutes(knex));
- app.use('/api/biourls', bioCards(knex))
+ app.use('/api/biourls', bioCards(knex));
 
 // app.use('/users', usersRoutes(knex));
 
@@ -209,6 +210,20 @@ app.post("/logout", (req, res) => {
 app.get("/new", (req, res) => {
   res.render("new");
 });
+
+app.post('/new', (req, res) => {
+  knex('urls')
+    .insert({
+      title: req.body.title,
+      url: req.body.url,
+      user_id: req.session.userid,
+      description: req.body.description,
+      dateAdded: Date.now(),
+    })
+    .then(() => {
+      res.redirect('/')
+    })
+})
 
 app.get("/:resource_id", (req, res) => {
   res.render("show");

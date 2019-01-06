@@ -8,7 +8,11 @@ module.exports = (knex) => {
     knex('urls')
     .join('topics', 'urls.id', '=', 'topics.url_id')
     .select('*')
+    .where({
+      topic: 'biology',
+    })
     .then((results) => {
+      console.log(results)
       res.json(results);
     })
   })

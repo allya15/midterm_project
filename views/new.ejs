@@ -41,38 +41,31 @@
 
     <!--Add New Form-->
 
-    <form class="input-field pl-5 pr-3 w-50" id='AddNewPage'>
+    <form action="/new" method="POST" class="input-field pl-5 pr-3 w-50" id='AddNewPage'>
 
       <!--Title-->
       <div class="form-group">
         <label for="title-area">Odyssey Title: </label>
-        <textarea class="form-control" id="resouce-title-box" rows="1"></textarea>
+        <input name='title' class="form-control" id="resouce-title-box" rows="1">
       </div>
 
       <!--URL-->
       <div class="form-group">
         <label for="exampleFormControlInput1">Odyssey URL: </label>
-        <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="http://">
+        <input name='url' type="url" class="form-control" id="exampleFormControlInput1" placeholder="http://">
       </div>
 
       <!--Catergory-->
       <div class="form-group">
         <label for="exampleFormControlSelect1">Select a Category:</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>None</option>
-          <option>Maths</option>
-          <option>Science</option>
-          <option>Politics</option>
-          <option>History</option>
-          <option>Dog Meme</option>
-          <option>Cat Meme</option>
-        </select>
+        <input name='topic' class="form-control" id='topicSelect' placeholder="Topic">
       </div>
 
       <!--Description-->
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Description:</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+        <input name='description' class="form-control" id="exampleFormControlTextarea1" rows="4">
+        
       </div>
 
       <!--Button-->
