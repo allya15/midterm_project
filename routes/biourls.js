@@ -5,21 +5,12 @@ const router  = express.Router();
 
 module.exports = (knex) => {
   router.get("/", (req,res) => {
-    knex
+    knex('urls')
+    .join('topics', 'urls.id', '=', 'topics.url_id')
     .select('*')
-    .from('topics')
-    .then((results) =>{
+    .then((results) => {
       res.json(results);
     })
-  });
-
+  })
   return router;
-}
-
-
-/*
-Table columns:
-id
-topic
-url_id
-*/
+};

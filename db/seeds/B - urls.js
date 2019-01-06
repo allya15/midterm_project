@@ -8,6 +8,7 @@ exports.seed = function(knex, Promise) {
         knex('urls').insert({id: 20000004, title: 'Hip Stretches', url: 'https://www.stack.com/a/4-hip-flexor-stretches-to-relieve-tight-hips', user_id: 10000001, description: 'stretches', dateAdded: '1536067342587'}),
         knex('urls').insert({id: 20000005, title: 'Malthusianism', url: 'https://en.wikipedia.org/wiki/Malthusianism', user_id: 10000002, description: 'production vs population', dateAdded: '1524476500000'}),
         knex('urls').insert({id: 20000006, title: 'Citizens Abducted!', url: 'https://www.destinationamerica.com/tv-shows/monsters-mysteries-in-america/videos/twins-abducted-by-aliens', user_id: 10000003, description: 'Illegal Aliens!', dateAdded:''}),
+        knex('urls').insert({id: 20000007, title: '@@@', url: 'https://www.destinationamerica.com/tv-shows/monsters-mysteries-in-america/videos/twins-abducted-by-aliens', user_id: 10000003, description: '@@@@@@@', dateAdded:'@@'}),
       ])
     })
 }

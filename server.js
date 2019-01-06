@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
+const PORT        = process.env.PORT || 3000;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
@@ -19,11 +19,12 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 // const commentsRoutes = require("./routes/comments");
-const urlsRoutes = require("./routes/resources");
-const profileRoutes = require("./routes/profile");
-const viewProfileRoutes = require("./routes/userviewprofile");
-const indexCardsRoutes = require("./routes/resourcesurls");
-const showRoutes = require("./routes/show");
+// const urlsRoutes = require("./routes/resources");
+// const profileRoutes = require("./routes/profile");
+// const viewProfileRoutes = require("./routes/userviewprofile");
+ const indexCardsRoutes = require("./routes/resourcesurls");
+ const showRoutes = require("./routes/show");
+ const bioCards = require("./routes/biourls")
 
 // const usersRoutes = require("./routes/users");
 
@@ -54,13 +55,16 @@ app.use(cookieSession({
 // Mount all resource routes
 // app.use("/api/users", usersRoutes(knex));
 // app.use("/comments", commentsRoutes(knex));
-app.use('/urls', urlsRoutes(knex));
-app.use('/api/profile', profileRoutes(knex));
-app.use('/api/userviewprofile', viewProfileRoutes(knex));
-app.use('/api/resourcesurls', indexCardsRoutes(knex));
-app.use('/api/show', showRoutes(knex));
+// // app.use('/urls', urlsRoutes(knex));
+// app.use('/api/profile', profileRoutes(knex));
+// app.use('/api/userviewprofile', viewProfileRoutes(knex));
+ app.use('/api/resourcesurls', indexCardsRoutes(knex));
+ app.use('/api/show', showRoutes(knex));
+ app.use('/api/biourls', bioCards(knex))
 
 // app.use('/users', usersRoutes(knex));
+
+
 
 
 // Home page
@@ -113,8 +117,8 @@ app.get("/", (req, res) => {
 
 //Catergory Pages
 //Math Page
-app.get("/maths", (req, res) => {
-  res.render("maths");
+app.get("/biology", (req, res) => {
+  res.render("biology");
 });
 //Science Page
 app.get("/science", (req, res) => {
@@ -138,7 +142,6 @@ app.get("/cat-memes", (req, res) => {
 });
 
 
-//These routes are not located in the routes folder, and required above. Only home page is actually rendered here
 
 function getUserId(email) {
   return knex.select("id").from("users").where('email', email)
@@ -151,8 +154,6 @@ function getUserId(email) {
   });
 };
 
-//Login page
-//Does what it is says on the tin...
 app.get("/login", (req, res) => {
   res.render("login");
 });
@@ -169,15 +170,10 @@ app.post("/login", (req, res) => {
   })
 });
 
-//Profile page
-//update route to get :userid instead of profile
 app.get("/:firstname-:lastname", (req, res) => {
   res.render("profile");
 });
 
-// Register page
-// need to add post route to actually register
-// fill out form for email, password, etc
 app.get("/register", (req, res) => {
   res.render("register");
 });
@@ -210,59 +206,12 @@ app.post("/logout", (req, res) => {
   res.redirect("/login");
 })
 
-//Individual resource page
-//update route to get :resourceid instead of individual
-app.get("/show/:id", (req, res) => {
-
-  const getURLs = knex('urls').select('*')
-    .then(function(result) {
-      return result
-    })
-
-  const everything = Promise.all([getURLs])
-    .then(function(result) {
-      const templateVars = {
-        urls: result[0]
-      }
-      console.log('CONSOLE', templateVars)
-      JSON.stringify(templateVars);
-      res.render("show", templateVars);
-    })
-
-
-});
-
-//Add a new resource
-//need to add route to POST to the home page with new url, as well as to your own profile page
 app.get("/new", (req, res) => {
   res.render("new");
 });
 
 app.get("/:resource_id", (req, res) => {
-
-
   res.render("show");
-  // let resource_id = req.params.resource_id;
-  // let templateVars = {};
-  //
-  // // Getting the resource detail from database
-  // knex('resources')
-  //   .join('users', 'users.id', '=', 'resources.user_id')
-  //   .where('resources.id', resource_id)
-  //   .select('resources.id', 'resources.URL', 'resources.title', 'resources.description', 'users.user_name', 'users.id as user_id', 'users.avatar_URL')
-  //   .then((results) => {
-  //     templateVars.resource_details = results[0];
-  //     knex('categories')
-  //       .select()
-  //       .then((categories) => {
-  //         templateVars.categories = categories;
-  //         res.render("resource_detail.ejs", templateVars);
-  //       })
-  //   })
-  //   .catch(function(error) {
-  //     console.error(error);
-  //   });
-
 });
 
 
