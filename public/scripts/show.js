@@ -7,7 +7,7 @@ $(() => {
     for (const resource of resources) {
       $(".resource-title").append(
         `<div class="col-sm-8">
-        ${resource.title}
+        <strong>${resource.title}</strong>
         </div>`);
 
     $(".resource-url").append(
@@ -33,7 +33,7 @@ $(() => {
 
     $(".resource-description").append(
       `<div class="col-sm-8">
-      ${resource.description}
+      <small>${resource.description}</small>
       </div>`
     );
 

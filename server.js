@@ -151,6 +151,18 @@ app.post("/login", (req, res) => {
   })
 });
 
+app.get('/search', (req, res) => {
+    // search
+    let query = req.query.query;
+    query = query.split(' ');
+    resourceHelper.search(query, (err, results) => {
+      if (err){
+        req.flash('error', err.message);
+      }
+      res.render('resources', { allResources: results });
+    })
+  })
+
 app.get("/profile/:username", (req, res) => {
   res.render("profile");
 });

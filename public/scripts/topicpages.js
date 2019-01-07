@@ -13,6 +13,7 @@ $(() => {
         <div class="card my-3">
         <div class="card-body">
           <h5 class="card-title">${resource.title}</h5>
+          <img src="${resource.image}" class="card-img-top" style="width: 15em; height: 12em;" alt="Card image cap">
           <p class="card-text">${resource.description}</p>
         </div>
         <div class="card-footer">
