@@ -9,8 +9,8 @@ const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
 const cookieSession = require('cookie-session');
-//to use put/patch/delete
-// const methodOverride = require('method-override')
+var moment = require('moment');
+moment().format();
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -19,12 +19,11 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const commentsRoutes = require("./routes/comments");
-// const urlsRoutes = require("./routes/resources");
-// const profileRoutes = require("./routes/profile");
-// const viewProfileRoutes = require("./routes/userviewprofile");
+const profileRoutes = require("./routes/profile");
+const viewProfileRoutes = require("./routes/userviewprofile");
 const indexCardsRoutes = require("./routes/resourcesurls");
 const showRoutes = require("./routes/show");
-const bioCards = require("./routes/biourls")
+const topicPagesRoutes = require("./routes/topicpages")
 
 
 // const usersRoutes = require("./routes/users");
@@ -56,16 +55,15 @@ app.use(cookieSession({
 // Mount all resource routes
 // app.use("/api/users", usersRoutes(knex));
 app.use("/api/comments", commentsRoutes(knex));
-// // app.use('/urls', urlsRoutes(knex));
-// app.use('/api/profile', profileRoutes(knex));
-// app.use('/api/userviewprofile', viewProfileRoutes(knex));
+app.use('/api/profile', profileRoutes(knex));
+app.use('/api/userviewprofile', viewProfileRoutes(knex));
 app.use('/api/resourcesurls', indexCardsRoutes(knex));
 app.use('/api/show', showRoutes(knex));
-app.use('/api/biourls', bioCards(knex));
+app.use('/api/topicpages', topicPagesRoutes(knex));
 
 // app.use('/users', usersRoutes(knex));
 
-app.get('/favicon.ico', (req, res) => res.status(204));
+// app.get('/favicon.ico', (req, res) => res.status(204));
 
 
 // Home page
@@ -118,28 +116,8 @@ app.get("/", (req, res) => {
 
 //Catergory Pages
 //Math Page
-app.get("/biology", (req, res) => {
-  res.render("biology");
-});
-//Science Page
-app.get("/science", (req, res) => {
-  res.render("science");
-});
-//Politics Page
-app.get("/politics", (req, res) => {
-  res.render("politics");
-});
-//History Page
-app.get("/history", (req, res) => {
-  res.render("history");
-});
-//Dog-Meme Page
-app.get("/fake-news", (req, res) => {
-  res.render("fake-news");
-});
-//Cat-Meme Page
-app.get("/cat-memes", (req, res) => {
-  res.render("cat-memes");
+app.get("/:topic", (req, res) => {
+  res.render("topics");
 });
 
 
@@ -171,7 +149,7 @@ app.post("/login", (req, res) => {
   })
 });
 
-app.get("/:firstname-:lastname", (req, res) => {
+app.get("/profile/:username", (req, res) => {
   res.render("profile");
 });
 

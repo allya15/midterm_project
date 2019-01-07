@@ -3,8 +3,9 @@ $(() => {
     method:"GET",
     url:"/api/resourcesurls"
   }).done((resources) => {
-    console.log("These are my resources: ", resources);
+    console.log("This is my resource: ", resources)
     for (resource of resources) {
+      const date = moment(resource.dateAdded).fromNow();
       $("#index-cards").append(`
         <div class = "col-sm-4">
         <div class="card my-3">
@@ -13,7 +14,7 @@ $(() => {
           <p class="card-text">${resource.description}</p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">${resource.dateAdded}</small>
+          <small class="text-muted">${date}</small>
 
           <!--Action Buttons -->
               <div class="btn-group btn-group-sm float-right" role="group" aria-label="Action Buttons">

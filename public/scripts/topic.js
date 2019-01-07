@@ -3,7 +3,6 @@ $(() => {
     method:"GET",
     url:"/api/resourcesurls"
   }).done((urls) => {
-    console.log("These are my resources: ", resources);
     for (url of urls) {
       $("#index-cards").append(`
         <div class = "col-sm-4">
