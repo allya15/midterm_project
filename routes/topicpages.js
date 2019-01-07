@@ -6,7 +6,7 @@ const router  = express.Router();
 module.exports = (knex) => {
   router.get("/", (req,res) => {
     const referer = req.headers.referer.split('/');
-    const topicraw = referer[3].split('?');
+    const topicraw = referer[4].split('?');
     const topic = topicraw[0];
     knex('urls')
     .join('topics', 'urls.id', '=', 'topics.url_id')

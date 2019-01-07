@@ -24,7 +24,9 @@ const profileRoutes = require("./routes/profile");
 const viewProfileRoutes = require("./routes/userviewprofile");
 const indexCardsRoutes = require("./routes/resourcesurls");
 const showRoutes = require("./routes/show");
-const topicPagesRoutes = require("./routes/topicpages")
+const topicPagesRoutes = require("./routes/topicpages");
+const userResourcesRoutes = require("./routes/userresources")
+
 
 
 // const usersRoutes = require("./routes/users");
@@ -63,6 +65,7 @@ app.use('/api/userviewprofile', viewProfileRoutes(knex));
 app.use('/api/resourcesurls', indexCardsRoutes(knex));
 app.use('/api/show', showRoutes(knex));
 app.use('/api/topicpages', topicPagesRoutes(knex));
+app.use('/api/userresources', userResourcesRoutes(knex));
 
 // app.use('/users', usersRoutes(knex));
 
@@ -190,6 +193,7 @@ app.post('/new', (req, res) => {
     .insert({
       title: req.body.title,
       url: req.body.url,
+      image: req.body.image,
       user_id: req.session.userid,
       description: req.body.description,
       dateAdded: Date.now(),
@@ -201,7 +205,7 @@ app.post('/new', (req, res) => {
 
 //Catergory Pages
 //Math Page
-app.get("/:topic", (req, res) => {
+app.get("/topic/:topic", (req, res) => {
   res.render("topics");
 });
 

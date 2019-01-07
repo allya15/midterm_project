@@ -13,6 +13,10 @@
     <!-- SCRIPTS -->
       <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
       <script type="text/javascript" src="/scripts/profile.js"></script>
+      <script type="text/javascript" src="/scripts/userresources.js"></script>
+      <script type="text/javascript" src="/scripts/moment.js"></script>
+
+
       <!-- bootstrap -->
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
       <!--Font Awesome -->
@@ -56,8 +60,9 @@
           <strong>Uploaded Odysseys</strong>
       </p>
       <hr class="my-4">
+      <div class="card-deck mt-3 pt-3 pb-3 pl-5 pr-5" id="profile-cards">
+      </div>
         <!-- Card Deck -->
-        <% include ./partials/_card-deck-upload-trump %>
     </div>
 
 
