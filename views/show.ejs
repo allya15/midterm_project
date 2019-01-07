@@ -100,7 +100,7 @@
 
 
 
-            <button class="btn nav-link active btn-lg" type="submit"><i class="fas fa-thumbs-up"></i> | Like </button>
+            <button class="btn nav-link active btn-lg btn-primary" type="submit"><i class="fas fa-thumbs-up"></i> | Like </button>
           </form>
           </div>
 
@@ -116,11 +116,15 @@
           </div>
 
           <!--Display Comment Box-->
+          <form action="/show" method="POST">
           <div id="comment" class="form-group">
             <label for="comment">Comment below:</label>
-            <textarea class="form-control" rows="4"></textarea>
-            <input type="submit" value="Comment">
+            <input name="comment" class="form-control" rows="4"></input>
+            <br>
+            <button class="btn nav-link active btn-lg btn-primary pt-1" type="submit">Comment </button>
+
           </div>
+        </form>
         </div>
       </div>
 
