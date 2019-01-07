@@ -27,6 +27,7 @@ const showRoutes = require("./routes/show");
 const topicPagesRoutes = require("./routes/topicpages");
 const userResourcesRoutes = require("./routes/userresources");
 const userLikesRoutes = require("./routes/userlikes");
+const searchResults = require("./routes/search");
 
 
 
@@ -200,6 +201,16 @@ app.post("/logout", (req, res) => {
 
 app.get("/new", (req, res) => {
   res.render("new");
+});
+
+app.post('/show', (req, res) => {
+  knex('comments')
+    .insert({
+      comment: req.body.comment,
+    })
+    .then(() => {
+
+    })
 });
 
 app.post('/new', (req, res) => {

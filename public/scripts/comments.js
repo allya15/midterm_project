@@ -4,11 +4,11 @@ $(() => {
       method: "GET",
       url: "/api/comments"
     }).done((comments) => {
-      for(let comment of comments) {
-        let $comment = $("<article>").text(comment.comment).prependTo($(".all-comments"));
-
-        $("<p>").addClass("created-by").text(`Comment by: ${comment.username}`).appendTo($comment);
-      }
-    });
+      for (const resource of resources) {
+      $(".new-comment").append(
+        `<div class="col-sm-30">
+        ${comment.comment}
+        </div>`);
+    };
   })
 })
