@@ -31,7 +31,7 @@ $(() => {
     );
 
     $(".resource-rating").append(
-      `<div class="col-sm-3">
+      `<div >
         ${ratings.rated}
         </div>`
       );
