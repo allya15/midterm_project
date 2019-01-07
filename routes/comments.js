@@ -5,14 +5,13 @@ const router  = express.Router();
 
 module.exports = (knex) => {
   router.get("/", (req,res) => {
-    knex
+    knex('comments')
+    .join('urls', 'comments.url_id', '=', 'urls.id')
     .select('*')
-    .from('comments')
     .then((results) =>{
       res.json(results);
     })
   });
-
   return router;
 }
 

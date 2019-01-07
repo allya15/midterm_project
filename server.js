@@ -22,9 +22,9 @@ const commentsRoutes = require("./routes/comments");
 // const urlsRoutes = require("./routes/resources");
 // const profileRoutes = require("./routes/profile");
 // const viewProfileRoutes = require("./routes/userviewprofile");
- const indexCardsRoutes = require("./routes/resourcesurls");
- const showRoutes = require("./routes/show");
- const bioCards = require("./routes/biourls")
+const indexCardsRoutes = require("./routes/resourcesurls");
+const showRoutes = require("./routes/show");
+const bioCards = require("./routes/biourls")
 
 
 // const usersRoutes = require("./routes/users");
@@ -55,17 +55,17 @@ app.use(cookieSession({
 
 // Mount all resource routes
 // app.use("/api/users", usersRoutes(knex));
-// app.use("/comments", commentsRoutes(knex));
+app.use("/api/comments", commentsRoutes(knex));
 // // app.use('/urls', urlsRoutes(knex));
 // app.use('/api/profile', profileRoutes(knex));
 // app.use('/api/userviewprofile', viewProfileRoutes(knex));
- app.use('/api/resourcesurls', indexCardsRoutes(knex));
- app.use('/api/show', showRoutes(knex));
- app.use('/api/biourls', bioCards(knex));
+app.use('/api/resourcesurls', indexCardsRoutes(knex));
+app.use('/api/show', showRoutes(knex));
+app.use('/api/biourls', bioCards(knex));
 
 // app.use('/users', usersRoutes(knex));
 
-
+app.get('/favicon.ico', (req, res) => res.status(204));
 
 
 // Home page
@@ -110,7 +110,7 @@ app.get("/", (req, res) => {
         likes: result[5],
       }
 
-      console.log(templateVars)
+      // console.log(templateVars)
       res.render("index", templateVars);
     })
 });
@@ -226,7 +226,43 @@ app.post('/new', (req, res) => {
 })
 
 app.get("/:resource_id", (req, res) => {
-  res.render("show");
+
+  const getURLs = knex('urls').select('*').where('id', req.params.resource_id)
+  .then(function(result) {
+    return result
+  })
+  const getTopics = knex('topics').select('*').where('url_id', req.params.resource_id)
+  .then(function(result) {
+    return result
+  })
+
+  const getRatings = knex('ratings').select('*').where('url_id', req.params.resource_id)
+    .then(function(result) {
+      return result
+    })
+
+  const getComments = knex('comments').select('*').where('url_id', req.params.resource_id)
+  .then(function(result) {
+    return result
+  })
+
+  const getLikes = knex('likes').select('*').where('url_id', req.params.resource_id)
+  .then(function(result) {
+    return result
+  })
+
+  const everything = Promise.all([getURLs, getTopics, getRatings, getComments, getLikes])
+  .then(function(result) {
+    const templateVars = {
+      urls: result[0],
+      topics: result[1],
+      ratings: result[2],
+      comments: result[3],
+      likes: result[4],
+    }
+    console.log('@@SHOW@@', templateVars, '@@SHOW@@')
+    res.render("show", templateVars);
+  })
 });
 
 
