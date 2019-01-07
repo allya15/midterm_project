@@ -10,6 +10,7 @@ exports.up = function(knex, Promise) {
         table.foreign('user_id').references('users.id');
         table.string('description');
         table.string('dateAdded');
+        table.string('image');
       }).return();
 
   const createTopicsTable = createURLsTable
@@ -59,7 +60,7 @@ exports.up = function(knex, Promise) {
       })
     });
 
-  return Promise.all([ 
+  return Promise.all([
     createURLsTable,
     createTopicsTable,
     createRatingsTable,

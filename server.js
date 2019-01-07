@@ -265,6 +265,52 @@ app.get("/:resource_id", (req, res) => {
 
 });
 
+app.post("/:resource_id/comments", (req, res) => {
+  const userId = req.session.user_id;
+  const comment = req.body.rcomment;
+  const resourceid = req.params.resource_id;
+    knex('comments')
+    .insert({
+      user_id: userId,
+      resource_id: resource_id,
+      comment: comment,
+      dateAdded: 'date'
+    })
+    .then(() => {
+      res.redirect('/' + resource_id);
+    });
+});
+
+app.post("/:resource_id/like", (req, res) => {
+  const userId = req.session.user_id;
+  const resourceid = req.params.resource_id;
+  knex('likes')
+  .insert({
+    user_id: userId,
+    resource_id: resource_id,
+    dateAdded: 'date'
+  })
+  .then(function() {
+    res.redirect('/' + resource_id);
+  })
+})
+
+app.post("/:resource_id/rate", (req, res) => {
+  const userId = req.session.user_id;
+  const resourceid = req.params.resource_id;
+  const rate = req.body.rating;
+
+  knex('ratings')
+  .insert({
+    user_id: userId,
+    resource_id: resource_id,
+    dateAdded: '2019-07-01',
+    rating: rate
+  })
+  .then(() => {
+    res.redirect('/' + resource_id);
+  })
+});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
