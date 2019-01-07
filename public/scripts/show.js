@@ -25,7 +25,7 @@ $(() => {
         </div>`);
 
     $(".resource-description").append(
-      `<div>
+      `<div class="col-sm-8">
       ${resource.description}
       </div>`
     );
