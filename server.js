@@ -266,15 +266,15 @@ app.get("/:resource_id", (req, res) => {
 });
 
 app.post("/:resource_id/comments", (req, res) => {
-  const userId = req.session.userid;
+  const userId = req.session.user_id;
   const comment = req.body.rcomment;
-  const resourceid = req.params.resourceid;
+  const resourceid = req.params.resource_id;
     knex('comments')
     .insert({
       user_id: userId,
-      resource_id: resourceid,
+      resource_id: resource_id,
       comment: comment,
-      date_added: 'date'
+      dateAdded: 'date'
     })
     .then(() => {
       res.redirect('/' + resource_id);
@@ -282,13 +282,13 @@ app.post("/:resource_id/comments", (req, res) => {
 });
 
 app.post("/:resource_id/like", (req, res) => {
-  const userId = req.session.userid;
+  const userId = req.session.user_id;
   const resourceid = req.params.resource_id;
   knex('likes')
   .insert({
     user_id: userId,
-    resource_id: resourceid,
-    date_added: 'date'
+    resource_id: resource_id,
+    dateAdded: 'date'
   })
   .then(function() {
     res.redirect('/' + resource_id);
@@ -296,7 +296,7 @@ app.post("/:resource_id/like", (req, res) => {
 })
 
 app.post("/:resource_id/rate", (req, res) => {
-  const userId = req.session.userid;
+  const userId = req.session.user_id;
   const resourceid = req.params.resource_id;
   const rate = req.body.rating;
 
@@ -304,7 +304,7 @@ app.post("/:resource_id/rate", (req, res) => {
   .insert({
     user_id: userId,
     resource_id: resource_id,
-    date_added: '2019-07-01',
+    dateAdded: '2019-07-01',
     rating: rate
   })
   .then(() => {
