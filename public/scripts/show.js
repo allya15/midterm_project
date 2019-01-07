@@ -17,6 +17,12 @@ $(() => {
         </a>
         </div>`);
 
+ $(".resource-image").append(
+      `<div class="col-sm-3">
+        <img src="${resource.image}">
+        </img>
+        </div>`);
+
     $(".resource-description").append(
       `<div>
       ${resource.description}
