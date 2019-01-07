@@ -17,9 +17,11 @@ $(() => {
         </a>
         </div>`);
 
- $(".resource-image").append(
+
+
+   $(".resource-image").append(
       `<div class="col-sm-3">
-        <img src="${resource.image}">
+        <img src="${resource.image}" height=100px width=100px >
         </img>
         </div>`);
 
@@ -28,7 +30,16 @@ $(() => {
       ${resource.description}
       </div>`
     );
+
+    $(".resource-rating").append(
+      `<div class="col-sm-3">
+        ${ratings.rated}
+        </div>`
+      );
     }
+
+
+
 
   })
 })
