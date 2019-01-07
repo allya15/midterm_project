@@ -6,8 +6,7 @@ const router  = express.Router();
 module.exports = (knex) => {
   router.get("/", (req,res) => {
     knex('comments')
-    .join('urls', 'comments.url_id', '=', 'urls.id')
-    .select('*')
+    .select('comment')
     .then((results) =>{
       res.json(results);
     })
