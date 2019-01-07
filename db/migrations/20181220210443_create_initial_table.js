@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
         table.string('description');
         table.string('dateAdded');
         table.string('image');
+        table.string('rating');
       }).return();
 
   const createTopicsTable = createURLsTable
@@ -45,6 +46,7 @@ exports.up = function(knex, Promise) {
         table.integer('url_id');
         table.foreign('url_id').references('urls.id');
         table.string('date');
+        table.string('author');
       })
     });
 

@@ -7,7 +7,7 @@ $(() => {
       for(let comment of comments) {
         let $comment = $("<article>").text(comment.comment).prependTo($(".all-comments"));
 
-        $("<p>").addClass("created-by").text(`Comment by: ${com.username}`).appendTo($comment);
+        $("<p>").addClass("created-by").text(`Comment by: ${comment.username}`).appendTo($comment);
       }
     });
   })
