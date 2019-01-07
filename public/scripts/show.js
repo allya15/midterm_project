@@ -19,7 +19,7 @@ $(() => {
 
  $(".resource-image").append(
       `<div class="col-sm-3">
-        <img src="${resource.image}">
+        <img src="${resource.image}" style="width: 15em; height: 12em;">
         </img>
         </div>`);
 

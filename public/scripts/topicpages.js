@@ -3,6 +3,7 @@ $(() => {
     method:"GET",
     url:"/api/topicpages"
   }).done((resources) => {
+    console.log("My resources: ", resources);
     const topic = resources[0].topic.charAt(0).toUpperCase() + resources[0].topic.slice(1);
     $("<h1 class='display-4'>").text(`${topic} Odysseys`).appendTo($(".topic-header"));
     for (resource of resources) {
@@ -19,7 +20,7 @@ $(() => {
 
           <!--Action Buttons -->
               <div class="btn-group btn-group-sm float-right" role="group" aria-label="Action Buttons">
-                <form action="/${resource.id}" method="get">
+                <form action="/${resource.url_id}" method="get">
                   <button class="resource-button btn btn-primary btn-sm rounded-0" type="submit"><i class="far fa-eye"></i> | View</button>
                 </form>
               </div>

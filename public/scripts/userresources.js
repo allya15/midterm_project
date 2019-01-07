@@ -3,14 +3,14 @@ $(() => {
     method:"GET",
     url:"/api/userresources"
   }).done((resources) => {
-    console.log("My resources: ", resources)
     for (resource of resources) {
       const date = moment(resource.dateAdded).fromNow();
       $("#profile-cards").append(
-        `<div class="card">
+        `<div class = "col-sm-6">
+        <div class="card my-2">
                 <div class="card-body">
                   <h5 class="card-title">${resource.title}</h5>
-                  <img src="${resource.image}" class="card-img-top img" alt="fireworks">
+                  <img src="${resource.image}" class="card-img-top img" style="width: 15em; height: 12em;" alt="fireworks">
                   <p class="card-text">${resource.description}</p>
                 </div>
                 <div class="card-footer">
@@ -23,6 +23,7 @@ $(() => {
 
                 </div>
 
+              </div>
               </div>`
       )
     }

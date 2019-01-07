@@ -25,7 +25,8 @@ const viewProfileRoutes = require("./routes/userviewprofile");
 const indexCardsRoutes = require("./routes/resourcesurls");
 const showRoutes = require("./routes/show");
 const topicPagesRoutes = require("./routes/topicpages");
-const userResourcesRoutes = require("./routes/userresources")
+const userResourcesRoutes = require("./routes/userresources");
+const userLikesRoutes = require("./routes/userlikes");
 
 
 
@@ -66,6 +67,8 @@ app.use('/api/resourcesurls', indexCardsRoutes(knex));
 app.use('/api/show', showRoutes(knex));
 app.use('/api/topicpages', topicPagesRoutes(knex));
 app.use('/api/userresources', userResourcesRoutes(knex));
+app.use('/api/userlikes', userLikesRoutes(knex));
+
 
 // app.use('/users', usersRoutes(knex));
 
