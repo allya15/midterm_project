@@ -11,6 +11,7 @@ exports.seed = function(knex, Promise) {
         knex('urls').insert({id: 20000007, title: 'How to Build a Wall', url: 'https://www.diynetwork.com/how-to/rooms-and-spaces/walls-and-ceilings/everything-you-need-to-know-about-walls', user_id: 10000003, description: 'Step by step wall instructions!', dateAdded: '20180917', image: 'https://static01.nyt.com/images/2019/01/06/us/politics/06dc-trumpwall1/merlin_148699890_21b5c3a1-973b-4b7e-8195-1cde3eec49a1-superJumbo.jpg?quality=90&auto=webp', rating: '⭐⭐⭐⭐'}),
         knex('urls').insert({id: 20000008, title: 'Ivanka Trump', url: 'https://en.wikipedia.org/wiki/Ivanka_Trump', user_id: 10000002, description: 'Keep up with my family!', dateAdded: '20181227', image: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Ivanka_Trump_official_photo.png', rating: '⭐⭐⭐⭐'}),
         knex('urls').insert({id: 20000009, title: 'Keepin up with the Putins', url: 'https://en.wikipedia.org/wiki/Vladimir_Putin', user_id: 10000001, description: 'So glad thers you, Vlad', dateAdded: '20181231', image: 'https://amp.businessinsider.com/images/5134d70a69bedd2d1f00003b-1334-1000.jpg', rating: '⭐'}),
+        knex('urls').insert({id: 20000010, title: 'See ya Later, Allygator', url: 'https://en.wikipedia.org/wiki/Alligator', user_id: 10000004, description: 'Look at all those chickens', dateAdded: '20181231', image: 'http://4.bp.blogspot.com/-9R-NGHgnXZ4/TrYS9fxf5hI/AAAAAAAADG8/q7Xrx7dsm9k/s1600/Funny-Alligator-03.jpg', rating: '⭐⭐⭐⭐⭐'}),
       ])
     })
 }

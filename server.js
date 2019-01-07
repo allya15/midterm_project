@@ -210,7 +210,7 @@ app.post('/show', (req, res) => {
       comment: req.body.comment,
     })
     .then(() => {
-      res.redirect('/show')
+
     })
 });
 
