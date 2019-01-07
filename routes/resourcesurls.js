@@ -8,13 +8,14 @@ module.exports = (knex) => {
     knex
     .select('*')
     .from('urls')
+    .orderBy('dateAdded', 'desc')
     .then((results) =>{
       res.json(results);
     })
   });
 
   return router;
-} 
+}
 
 /*
 Table columns:
