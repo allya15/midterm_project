@@ -117,13 +117,6 @@ app.get("/", (req, res) => {
 });
 
 
-//Catergory Pages
-//Math Page
-app.get("/:topic", (req, res) => {
-  res.render("topics");
-});
-
-
 
 function getUserId(email) {
   return knex.select("id").from("users").where('email', email)
@@ -205,6 +198,12 @@ app.post('/new', (req, res) => {
       res.redirect('/')
     })
 })
+
+//Catergory Pages
+//Math Page
+app.get("/:topic", (req, res) => {
+  res.render("topics");
+});
 
 app.get("/:resource_id", (req, res) => {
 
